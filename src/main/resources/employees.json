@@ -1,0 +1,23 @@
+[
+  {
+    "id": 0,
+    "name": "Taras",
+    "surname": "Matsyshyn",
+    "title": "Middle",
+    "skill": "Java"
+  },
+  {
+    "id": 1,
+    "name": "Taras",
+    "surname": "Tarasenko",
+    "title": "Senior",
+    "skill": "Java"
+  },
+  {
+    "id": 2,
+    "name": "Vova",
+    "surname": "Vovk",
+    "title": "Lead",
+    "skill": "Java"
+  }
+]

@@ -1,0 +1,1 @@
+INSERT INTO employee(id,name,surname,skill,title,unit,rm) VALUES ('3', 'Taras', 'Matsyshyn', 'Java', 'Middle', 'Galaxy', 'Rom');
