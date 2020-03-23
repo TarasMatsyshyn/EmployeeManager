@@ -1,47 +1,47 @@
-package com.matsyshyn.database.dao.impl;
+package com.matsyshyn.dao.impl;
 
-import com.matsyshyn.EmployeeManager.model.Unit;
-import com.matsyshyn.database.DBController;
-import com.matsyshyn.database.Mapper;
-import com.matsyshyn.database.dao.UnitDao;
+import com.matsyshyn.dao.RmDao;
+import com.matsyshyn.model.Rm;
+import com.matsyshyn.dbManipulator.DBController;
+import com.matsyshyn.dbManipulator.Mapper;
 
 import java.sql.SQLException;
 import java.util.List;
 
-public class UnitDaoImpl implements UnitDao {
+public class RmDaoImpl implements RmDao {
     private static DBController dbController = new DBController();
     private static Mapper mapper = new Mapper();
 
     @Override
-    public void add(Unit unit) {
+    public void add(Rm rm) {
 
     }
 
     @Override
-    public void update(Unit unit) {
+    public void update(Rm rm) {
 
     }
 
     @Override
-    public void delete(Unit unit) {
+    public void delete(Rm rm) {
 
     }
 
     @Override
-    public Unit findById(int id) throws SQLException {
-        return mapper.mapToUnitList(
+    public Rm getById(int id) throws SQLException {
+        return mapper.mapToRmList(
                 dbController.getFromDB(Queries.SELECT_BY_ID.getWithParam(String.valueOf(id))))
                 .get(0);
     }
 
     @Override
-    public List<Unit> getAll() throws SQLException {
-        return mapper.mapToUnitList(dbController.getFromDB(UnitDaoImpl.Queries.SELECT_ALL.query));
+    public List<Rm> getAll() throws SQLException {
+        return mapper.mapToRmList(dbController.getFromDB(Queries.SELECT_ALL.query));
     }
 
     public enum Queries {
-        SELECT_ALL("SELECT * FROM unit"),
-        SELECT_BY_ID("SELECT * FROM unit WHERE ID = %s");
+        SELECT_ALL("SELECT * FROM rm"),
+        SELECT_BY_ID("SELECT * FROM rm WHERE ID = %s");
 
         private String query;
 

@@ -1,6 +1,6 @@
-package com.matsyshyn.database.dao;
+package com.matsyshyn.dao;
 
-import com.matsyshyn.EmployeeManager.model.Unit;
+import com.matsyshyn.model.Unit;
 
 import java.sql.SQLException;
 import java.util.List;

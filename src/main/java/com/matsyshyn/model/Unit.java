@@ -1,28 +1,28 @@
-package com.matsyshyn.EmployeeManager.model;
+package com.matsyshyn.model;
 
 public class Unit {
 
-    private Integer id;
+    private int id;
     private String name;
     private Rm rm;
-    private Integer count;
+    private int count;
 
     public Unit() {
         super();
     }
 
-    public Unit(Integer id, String name, Rm rm, Integer count) {
+    public Unit(int id, String name, Rm rm, int count) {
         this.id = id;
         this.name = name;
         this.rm = rm;
         this.count = count;
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -42,11 +42,11 @@ public class Unit {
         this.rm = rm;
     }
 
-    public Integer getCount() {
+    public int getCount() {
         return count;
     }
 
-    public void setCount(Integer count) {
+    public void setCount(int count) {
         this.count = count;
     }
 }

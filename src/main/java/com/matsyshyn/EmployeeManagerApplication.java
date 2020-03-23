@@ -1,4 +1,4 @@
-package com.matsyshyn.EmployeeManager;
+package com.matsyshyn;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,7 +1,7 @@
-package com.matsyshyn.EmployeeManager.controller;
+package com.matsyshyn.controllers;
 
-import com.matsyshyn.EmployeeManager.model.Employee;
-import com.matsyshyn.database.dao.impl.EmployeeDaoImpl;
+import com.matsyshyn.model.Employee;
+import com.matsyshyn.dao.impl.EmployeeDaoImpl;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,6 +34,5 @@ public class EmployeeController {
     public Employee putEmployee(@RequestBody Employee employee) {
         return null;
     }
-
 
 }

@@ -1,4 +1,4 @@
-package com.matsyshyn.EmployeeManager.model;
+package com.matsyshyn.model;
 
 public class Rm {
 

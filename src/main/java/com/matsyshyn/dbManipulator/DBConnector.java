@@ -1,6 +1,6 @@
-package com.matsyshyn.database;
+package com.matsyshyn.dbManipulator;
 
-import com.matsyshyn.EmployeeManager.utils.PropertyParser;
+import com.matsyshyn.utils.PropertyParser;
 
 import java.sql.Connection;
 import java.sql.Driver;

@@ -1,8 +1,7 @@
-package com.matsyshyn.database.dao;
+package com.matsyshyn.dao;
 
-import com.matsyshyn.EmployeeManager.model.Rm;
+import com.matsyshyn.model.Rm;
 
-import java.rmi.server.RMIClassLoader;
 import java.sql.SQLException;
 import java.util.List;
 

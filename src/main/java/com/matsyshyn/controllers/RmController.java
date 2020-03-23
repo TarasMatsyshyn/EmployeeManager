@@ -1,8 +1,7 @@
-package com.matsyshyn.EmployeeManager.controller;
+package com.matsyshyn.controllers;
 
-import com.matsyshyn.EmployeeManager.model.Employee;
-import com.matsyshyn.EmployeeManager.model.Rm;
-import com.matsyshyn.database.dao.impl.RmDaoImpl;
+import com.matsyshyn.model.Rm;
+import com.matsyshyn.dao.impl.RmDaoImpl;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;

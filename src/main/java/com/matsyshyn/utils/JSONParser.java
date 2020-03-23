@@ -1,10 +1,10 @@
-package com.matsyshyn.EmployeeManager.utils;
+package com.matsyshyn.utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.matsyshyn.EmployeeManager.model.Employee;
+import com.matsyshyn.model.Employee;
 
 import java.io.File;
 import java.io.IOException;

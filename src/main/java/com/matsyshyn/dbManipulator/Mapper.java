@@ -1,10 +1,10 @@
-package com.matsyshyn.database;
+package com.matsyshyn.dbManipulator;
 
-import com.matsyshyn.EmployeeManager.model.Employee;
-import com.matsyshyn.EmployeeManager.model.Rm;
-import com.matsyshyn.EmployeeManager.model.Unit;
-import com.matsyshyn.database.dao.impl.RmDaoImpl;
-import com.matsyshyn.database.dao.impl.UnitDaoImpl;
+import com.matsyshyn.model.Employee;
+import com.matsyshyn.model.Rm;
+import com.matsyshyn.model.Unit;
+import com.matsyshyn.dao.impl.RmDaoImpl;
+import com.matsyshyn.dao.impl.UnitDaoImpl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,10 +16,11 @@ public class Mapper {
     private UnitDaoImpl unitDao = new UnitDaoImpl();
 
     public List<Employee> mapToEmployeeList(ResultSet resultSet) throws SQLException {
-        Employee employee = new Employee();
         List<Employee> employeeList = new ArrayList<>();
 
         while (resultSet.next()) {
+            Employee employee = new Employee();
+
             employee.setId(resultSet.getInt(1));
             employee.setName(resultSet.getString(2));
             employee.setSurname(resultSet.getString(3));
@@ -34,10 +35,11 @@ public class Mapper {
     }
 
     public List<Rm> mapToRmList(ResultSet resultSet) throws SQLException {
-        Rm rm = new Rm();
         List<Rm> rmList = new ArrayList<>();
 
         while (resultSet.next()) {
+            Rm rm = new Rm();
+
             rm.setId(resultSet.getInt(1));
             rm.setName(resultSet.getString(2));
             rm.setSurname(resultSet.getString(3));
@@ -48,10 +50,11 @@ public class Mapper {
     }
 
     public List<Unit> mapToUnitList(ResultSet resultSet) throws SQLException {
-        Unit unit = new Unit();
         List<Unit> unitList = new ArrayList<>();
 
         while (resultSet.next()) {
+            Unit unit = new Unit();
+
             unit.setId(resultSet.getInt(1));
             unit.setName(resultSet.getString(2));
             unit.setRm(rmDao.getById(resultSet.getInt(3)));

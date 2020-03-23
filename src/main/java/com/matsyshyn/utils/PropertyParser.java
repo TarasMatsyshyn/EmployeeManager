@@ -1,4 +1,4 @@
-package com.matsyshyn.EmployeeManager.utils;
+package com.matsyshyn.utils;
 
 import java.io.FileInputStream;
 import java.io.IOException;
