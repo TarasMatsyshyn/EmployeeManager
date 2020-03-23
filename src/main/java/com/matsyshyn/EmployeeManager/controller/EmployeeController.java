@@ -1,16 +1,19 @@
 package com.matsyshyn.EmployeeManager.controller;
 
 import com.matsyshyn.EmployeeManager.model.Employee;
-import com.matsyshyn.EmployeeManager.utils.JSONParser;
+import com.matsyshyn.database.dao.impl.EmployeeDaoImpl;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.sql.SQLException;
 import java.util.List;
 
 @org.springframework.web.bind.annotation.RestController
-public class RestController {
+public class EmployeeController {
+
+    private EmployeeDaoImpl employeeDao = new EmployeeDaoImpl();
 
     @GetMapping("/")
     public String main() {
@@ -18,18 +21,18 @@ public class RestController {
     }
 
     @GetMapping("/employees")
-    public List getAllEmployees() {
-        return JSONParser.getAllEmployees();
+    public List getAllEmployees() throws SQLException {
+        return employeeDao.getAll();
     }
 
     @GetMapping("/employees/get")
-    public Employee getEmployee(@RequestParam(value = "id", defaultValue = "0") Integer id) {
-        return JSONParser.getEmployee(id);
+    public Employee getEmployee(@RequestParam(value = "id", defaultValue = "0") Integer id) throws SQLException {
+        return employeeDao.getById(id);
     }
 
     @PostMapping("/employee/post")
     public Employee putEmployee(@RequestBody Employee employee) {
-        return employee;
+        return null;
     }
 
 

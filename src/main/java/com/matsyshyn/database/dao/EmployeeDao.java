@@ -2,6 +2,7 @@ package com.matsyshyn.database.dao;
 
 import com.matsyshyn.EmployeeManager.model.Employee;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public interface EmployeeDao {
@@ -11,7 +12,7 @@ public interface EmployeeDao {
 
     void delete(Employee employee);
 
-    Employee findById(int id);
+    Employee getById(int id) throws SQLException;
 
-    List<Employee> getAll();
+    List<Employee> getAll() throws SQLException;
 }

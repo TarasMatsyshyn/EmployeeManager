@@ -29,23 +29,20 @@ public class EmployeeDaoImpl implements EmployeeDao {
     }
 
     @Override
-    public Employee findById(int id) {
-        return null;
+    public Employee getById(int id) throws SQLException {
+        return mapper.mapToEmployeeList(
+                dbController.getFromDB(Queries.SELECT_BY_ID.getWithParam(String.valueOf(id))))
+                .get(0);
     }
 
     @Override
-    public List<Employee> getAll() {
-        try {
-            return mapper.mapToEmployeeList(dbController.getFromDB(Queries.SELECT_ALL.query));
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
+    public List<Employee> getAll() throws SQLException {
+        return mapper.mapToEmployeeList(dbController.getFromDB(Queries.SELECT_ALL.query));
     }
 
     public enum Queries {
         SELECT_ALL("SELECT * FROM employee"),
-        ;
+        SELECT_BY_ID("SELECT * FROM employee WHERE ID = %s");
 
         private String query;
 
@@ -56,5 +53,10 @@ public class EmployeeDaoImpl implements EmployeeDao {
         public String getQuery() {
             return query;
         }
+
+        public String getWithParam(String param) {
+            return String.format(query, param);
+        }
+
     }
 }

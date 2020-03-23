@@ -28,7 +28,6 @@ public class DBConnector {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 
     public static DBConnector getInstance() throws SQLException {

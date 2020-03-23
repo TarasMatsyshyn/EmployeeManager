@@ -5,17 +5,15 @@ public class Rm {
     private Integer id;
     private String name;
     private String surname;
-    private Unit unit;
 
     public Rm() {
         super();
     }
 
-    public Rm(Integer id, String name, String surname, Unit unit) {
+    public Rm(Integer id, String name, String surname) {
         this.id = id;
         this.name = name;
         this.surname = surname;
-        this.unit = unit;
     }
 
     public Integer getId() {
@@ -40,13 +38,5 @@ public class Rm {
 
     public void setSurname(String surname) {
         this.surname = surname;
-    }
-
-    public Unit getUnit() {
-        return unit;
-    }
-
-    public void setUnit(Unit unit) {
-        this.unit = unit;
     }
 }

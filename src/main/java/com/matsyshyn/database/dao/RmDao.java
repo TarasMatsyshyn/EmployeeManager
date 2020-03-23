@@ -3,6 +3,7 @@ package com.matsyshyn.database.dao;
 import com.matsyshyn.EmployeeManager.model.Rm;
 
 import java.rmi.server.RMIClassLoader;
+import java.sql.SQLException;
 import java.util.List;
 
 public interface RmDao {
@@ -13,8 +14,8 @@ public interface RmDao {
 
     void delete(Rm rm);
 
-    Rm findById(int id);
+    Rm getById(int id) throws SQLException;
 
-    List<RMIClassLoader> getAll();
+    List<Rm> getAll() throws SQLException;
 
 }

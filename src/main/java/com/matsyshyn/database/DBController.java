@@ -8,6 +8,4 @@ public class DBController {
     public ResultSet getFromDB(String query) throws SQLException {
         return DBConnector.getInstance().getConnection().createStatement().executeQuery(query);
     }
-
-
 }
