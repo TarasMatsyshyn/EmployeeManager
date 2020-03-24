@@ -5,11 +5,12 @@ import java.sql.SQLException;
 
 public class DBController {
 
-    public ResultSet getFromDB(String query) throws SQLException {
+    public ResultSet executeQuery(String query) throws SQLException {
         return DBConnector.getInstance().getConnection().createStatement().executeQuery(query);
     }
 
-    public void insertToDb(String query) throws SQLException {
-        DBConnector.getInstance().getConnection().createStatement().executeQuery(query);
+    public int executeUpdate(String query) throws SQLException {
+        return DBConnector.getInstance().getConnection().createStatement().executeUpdate(query);
     }
+
 }

@@ -28,15 +28,15 @@ public class UnitDaoImpl implements UnitDao {
     }
 
     @Override
-    public Unit findById(int id) throws SQLException {
+    public Unit getById(int id) throws SQLException {
         return mapper.mapToUnitList(
-                dbController.getFromDB(Queries.SELECT_BY_ID.getWithParam(String.valueOf(id))))
+                dbController.executeQuery(Queries.SELECT_BY_ID.getWithParam(String.valueOf(id))))
                 .get(0);
     }
 
     @Override
     public List<Unit> getAll() throws SQLException {
-        return mapper.mapToUnitList(dbController.getFromDB(UnitDaoImpl.Queries.SELECT_ALL.query));
+        return mapper.mapToUnitList(dbController.executeQuery(UnitDaoImpl.Queries.SELECT_ALL.query));
     }
 
     public enum Queries {

@@ -13,7 +13,7 @@ public interface UnitDao {
 
     void delete(Unit unit);
 
-    Unit findById(int id) throws SQLException;
+    Unit getById(int id) throws SQLException;
 
     List<Unit> getAll() throws SQLException;
 

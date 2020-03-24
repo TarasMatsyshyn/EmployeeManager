@@ -26,7 +26,7 @@ public class Mapper {
             employee.setSurname(resultSet.getString(3));
             employee.setSkill(resultSet.getString(4));
             employee.setTitle(resultSet.getString(5));
-            employee.setUnit(unitDao.findById(resultSet.getInt(6)));
+            employee.setUnit(unitDao.getById(resultSet.getInt(6)));
             employee.setRm(rmDao.getById(resultSet.getInt(7)));
 
             employeeList.add(employee);

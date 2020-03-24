@@ -30,13 +30,13 @@ public class RmDaoImpl implements RmDao {
     @Override
     public Rm getById(int id) throws SQLException {
         return mapper.mapToRmList(
-                dbController.getFromDB(Queries.SELECT_BY_ID.getWithParam(String.valueOf(id))))
+                dbController.executeQuery(Queries.SELECT_BY_ID.getWithParam(String.valueOf(id))))
                 .get(0);
     }
 
     @Override
     public List<Rm> getAll() throws SQLException {
-        return mapper.mapToRmList(dbController.getFromDB(Queries.SELECT_ALL.query));
+        return mapper.mapToRmList(dbController.executeQuery(Queries.SELECT_ALL.query));
     }
 
     public enum Queries {
