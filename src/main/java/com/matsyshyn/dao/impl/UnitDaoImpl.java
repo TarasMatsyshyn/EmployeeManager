@@ -11,6 +11,7 @@ import java.util.List;
 public class UnitDaoImpl implements UnitDao {
     private static DBController dbController = new DBController();
     private static Mapper mapper = new Mapper();
+    private final int FIRST_ELEMENT = 0;
 
     @Override
     public void add(Unit unit) {
@@ -31,7 +32,7 @@ public class UnitDaoImpl implements UnitDao {
     public Unit getById(int id) throws SQLException {
         return mapper.mapToUnitList(
                 dbController.executeQuery(Queries.SELECT_BY_ID.getWithParam(String.valueOf(id))))
-                .get(0);
+                .get(FIRST_ELEMENT);
     }
 
     @Override
@@ -47,10 +48,6 @@ public class UnitDaoImpl implements UnitDao {
 
         Queries(String query) {
             this.query = query;
-        }
-
-        public String getQuery() {
-            return query;
         }
 
         public String getWithParam(String param) {

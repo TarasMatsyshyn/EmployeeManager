@@ -13,15 +13,29 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
     private static DBController dbController = new DBController();
     private static Mapper mapper = new Mapper();
+    private final int FIRST_ELEMENT = 0;
 
     @Override
-    public void add(Employee employee) {
+    public void add(Employee employee) throws SQLException {
+        String query = Queries.INSERT_EMPLOYEE.getSQLInsertEmployee(
+                String.valueOf(employee.getId()),
+                employee.getName(), employee.getSurname(),
+                employee.getSkill(), employee.getTitle(),
+                String.valueOf(employee.getUnit().getId()),
+                String.valueOf(employee.getRm().getId()));
 
+        dbController.executeUpdate(query);
     }
 
     @Override
-    public void update(Employee employee) {
+    public void update(Employee employee) throws SQLException {
+        String query = Queries.UPDATE_BY_ID.getSQLUpdateEmployee(employee.getName(), employee.getSurname(),
+                employee.getSkill(), employee.getTitle(),
+                String.valueOf(employee.getUnit().getId()),
+                String.valueOf(employee.getRm().getId()),
+                String.valueOf(employee.getId()));
 
+        dbController.executeUpdate(query);
     }
 
     @Override
@@ -32,7 +46,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
     @Override
     public Employee getById(int id) throws SQLException {
         ResultSet employeeResultSet = dbController.executeQuery(Queries.SELECT_BY_ID.getWithParam(String.valueOf(id)));
-        Employee employee = mapper.mapToEmployeeList(employeeResultSet).get(0);
+        Employee employee = mapper.mapToEmployeeList(employeeResultSet).get(FIRST_ELEMENT);
 
         return employee;
     }
@@ -48,8 +62,9 @@ public class EmployeeDaoImpl implements EmployeeDao {
     public enum Queries {
         SELECT_ALL("SELECT * FROM employee"),
         SELECT_BY_ID("SELECT * FROM employee WHERE ID = %s"),
-        INSERT_EMPLOYEE("INSERT INTO employee (id, name, surname, skill, title, unit_id, rm_id) VALUES (%d, %s, %s, %s, %s, %d, %d);"),
-        DELETE_BY_ID("DELETE FROM employee WHERE ID = %s");
+        INSERT_EMPLOYEE("INSERT INTO employee (id, name, surname, skill, title, unit_id, rm_id) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s'    )"),
+        DELETE_BY_ID("DELETE FROM employee WHERE ID = %s"),
+        UPDATE_BY_ID("UPDATE employee SET name = '%s', surname = '%s', skill = '%s', title = '%s', unit_id = '%s', rm_id = '%s' WHERE (id = %s)");
 
         private String query;
 
@@ -57,12 +72,16 @@ public class EmployeeDaoImpl implements EmployeeDao {
             this.query = query;
         }
 
-        public String getQuery() {
-            return query;
-        }
-
         public String getWithParam(String param) {
             return String.format(query, param);
+        }
+
+        public String getSQLInsertEmployee(String id, String name, String surname, String skill, String title, String unit_id, String rm_id) {
+            return String.format(query, id, name, surname, skill, title, unit_id, rm_id);
+        }
+
+        public String getSQLUpdateEmployee(String name, String surname, String skill, String title, String unit_id, String rm_id, String employeeId) {
+            return String.format(query, name, surname, skill, title, unit_id, rm_id, employeeId);
         }
 
     }

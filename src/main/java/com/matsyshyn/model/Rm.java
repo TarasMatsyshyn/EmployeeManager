@@ -2,7 +2,7 @@ package com.matsyshyn.model;
 
 public class Rm {
 
-    private Integer id;
+    private int id;
     private String name;
     private String surname;
 
@@ -10,17 +10,17 @@ public class Rm {
         super();
     }
 
-    public Rm(Integer id, String name, String surname) {
+    public Rm(int id, String name, String surname) {
         this.id = id;
         this.name = name;
         this.surname = surname;
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 

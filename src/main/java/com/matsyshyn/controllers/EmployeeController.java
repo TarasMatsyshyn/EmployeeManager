@@ -4,10 +4,7 @@ import com.matsyshyn.model.Employee;
 import com.matsyshyn.dao.impl.EmployeeDaoImpl;
 import com.matsyshyn.services.EmployeeService;
 import com.matsyshyn.services.impl.EmployeeServiceImpl;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -34,14 +31,21 @@ public class EmployeeController {
     }
 
     @GetMapping("/employees/delete")
-    public List deleteEmployee(@RequestParam(value = "id") Integer id) throws SQLException {
+    public List deleteEmployee(@RequestParam(value = "id") int id) throws SQLException {
         employeeService.delete(id);
         return employeeService.getAll();
     }
 
-    @PostMapping("/employee/post")
-    public Employee putEmployee(@RequestBody Employee employee) {
-        return null;
+    @RequestMapping(value = "/employee/post", method = {RequestMethod.GET, RequestMethod.POST})
+    public List postEmployee(@RequestParam(value = "name") String name,
+                                 @RequestParam(value = "surname") String surname,
+                                 @RequestParam(value = "skill") String skill,
+                                 @RequestParam(value = "title") String title,
+                                 @RequestParam(value = "unit") int unit_id,
+                                 @RequestParam(value = "rm") int rm_id) throws SQLException {
+
+        employeeService.add(name, surname, skill, title, unit_id, rm_id);
+        return getAllEmployees();
     }
 
 }

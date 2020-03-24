@@ -21,7 +21,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public void add(String name, String surname, String skill, String title, int unitID, int rmID) throws SQLException {
         Employee employee = new Employee();
-
+        employee.setId(employeeDao.getAll().size() + 2);
         employee.setName(name);
         employee.setSurname(surname);
         employee.setSkill(skill);
