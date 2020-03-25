@@ -11,7 +11,7 @@ public interface RmDao {
 
     void update(Rm rm);
 
-    void delete(Rm rm);
+    void delete(int id) throws SQLException;
 
     Rm getById(int id) throws SQLException;
 

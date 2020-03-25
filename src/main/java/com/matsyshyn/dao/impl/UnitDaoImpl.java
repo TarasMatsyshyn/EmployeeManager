@@ -1,9 +1,9 @@
 package com.matsyshyn.dao.impl;
 
 import com.matsyshyn.dao.UnitDao;
-import com.matsyshyn.model.Unit;
 import com.matsyshyn.dbManipulator.DBController;
 import com.matsyshyn.dbManipulator.Mapper;
+import com.matsyshyn.model.Unit;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -24,8 +24,8 @@ public class UnitDaoImpl implements UnitDao {
     }
 
     @Override
-    public void delete(Unit unit) {
-
+    public void delete(int id) throws SQLException {
+        dbController.executeUpdate(Queries.DELETE_BY_ID.getWithParam(String.valueOf(id)));
     }
 
     @Override
@@ -42,8 +42,9 @@ public class UnitDaoImpl implements UnitDao {
 
     public enum Queries {
         SELECT_ALL("SELECT * FROM unit"),
-        SELECT_BY_ID("SELECT * FROM unit WHERE ID = %s");
-
+        SELECT_BY_ID("SELECT * FROM unit WHERE ID = %s"),
+        DELETE_BY_ID("DELETE FROM unit WHERE ID = %s"),
+        ;
         private String query;
 
         Queries(String query) {

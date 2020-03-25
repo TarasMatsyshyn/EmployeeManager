@@ -11,7 +11,7 @@ public interface UnitDao {
 
     void update(Unit unit);
 
-    void delete(Unit unit);
+    void delete(int id) throws SQLException;
 
     Unit getById(int id) throws SQLException;
 

@@ -30,7 +30,7 @@ public class EmployeeController {
         return employeeService.getById(id);
     }
 
-    @GetMapping("/employees/delete")
+    @RequestMapping(value = "/employees/delete", method = {RequestMethod.GET, RequestMethod.PUT})
     public List deleteEmployee(@RequestParam(value = "id") int id) throws SQLException {
         employeeService.delete(id);
         return employeeService.getAll();

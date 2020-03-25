@@ -1,9 +1,9 @@
 package com.matsyshyn.dao.impl;
 
 import com.matsyshyn.dao.RmDao;
-import com.matsyshyn.model.Rm;
 import com.matsyshyn.dbManipulator.DBController;
 import com.matsyshyn.dbManipulator.Mapper;
+import com.matsyshyn.model.Rm;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -22,7 +22,8 @@ public class RmDaoImpl implements RmDao {
     }
 
     @Override
-    public void delete(Rm rm) {
+    public void delete(int id) throws SQLException {
+        dbController.executeUpdate(Queries.DELETE_BY_ID.getWithParam(String.valueOf(id)));
     }
 
     @Override
@@ -39,7 +40,9 @@ public class RmDaoImpl implements RmDao {
 
     public enum Queries {
         SELECT_ALL("SELECT * FROM rm"),
-        SELECT_BY_ID("SELECT * FROM rm WHERE ID = %s");
+        SELECT_BY_ID("SELECT * FROM rm WHERE ID = %s"),
+        DELETE_BY_ID("DELETE FROM rm WHERE ID = %s"),
+        ;
 
         private String query;
 

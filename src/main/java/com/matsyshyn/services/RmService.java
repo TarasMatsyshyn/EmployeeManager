@@ -2,6 +2,7 @@ package com.matsyshyn.services;
 
 import com.matsyshyn.model.Rm;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public interface RmService {
@@ -9,10 +10,10 @@ public interface RmService {
 
     void update(int id, String name, String surname);
 
-    void delete(int id);
+    void delete(int id) throws SQLException;
 
-    Rm getById(int id);
+    Rm getById(int id) throws SQLException;
 
-    List<Rm> getAll();
+    List<Rm> getAll() throws SQLException;
 
 }
